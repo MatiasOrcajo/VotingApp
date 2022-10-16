@@ -51,16 +51,27 @@
         </div>
     </div> <!-- end idea-container -->
 
-    <div class="buttons-container flex items-center justify-between mt-6">
+    <div
+        x-data="{ isOpen: false }"
+        class="buttons-container flex items-center justify-between mt-6"
+    >
         <div class="flex items-center space-x-4 ml-6">
             <div class="relative">
                 <button
+                    @click="isOpen = !isOpen"
                     type="button"
                     class="flex items-center justify-center h-11 w-32 text-sm bg-blue text-white font-semibold rounded-xl border border-blue hover:bg-blue-hover transition duration-150 ease-in px-6 py-3"
                 >
                     Reply
                 </button>
-                <div class="absolute z-10 w-104 text-left font-semibold text-sm bg-white shadow-dialog rounded-xl mt-2">
+                <div
+                    x-cloak
+                    x-show="isOpen"
+                    x-transition.origin.top.left.duration.500ms
+                    @click.away="isOpen = !isOpen"
+                    @keydown.escape.window="isOpen = false"
+                    class="absolute z-10 w-104 text-left font-semibold text-sm bg-white shadow-dialog rounded-xl mt-2"
+                >
                     <form action="#" class="space-y-4 px-4 py-6">
                         <div>
                             <textarea name="post_comment" id="post_comment" cols="30" rows="4" class="w-full text-sm bg-gray-100 rounded-xl placeholder-gray-900 border-none px-4 py-2" placeholder="Go ahead, don't be shy. Share your thoughts..."></textarea>
@@ -87,9 +98,15 @@
                     </form>
                 </div>
             </div>
-            <div class="relative">
+            <div
+                x-data="{ isOpen: false }"
+
+                class="relative"
+            >
                 <button
+                    @click="isOpen = !isOpen"
                     type="button"
+
                     class="flex items-center justify-center w-36 h-11 text-sm bg-gray-200 font-semibold rounded-xl border border-gray-200 hover:border-gray-400 transition duration-150 ease-in px-6 py-3"
                 >
                     <span>Set Status</span>
@@ -97,7 +114,15 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                     </svg>
                 </button>
-                <div class="absolute z-20 w-76 text-left font-semibold text-sm bg-white shadow-dialog rounded-xl mt-2">
+                <div
+                    x-cloak
+                    x-show="isOpen"
+                    x-transition.origin.top.left.duration.500ms
+                    @click.away="isOpen = !isOpen"
+                    @keydown.escape.window="isOpen = false"
+
+                    class="absolute z-20 w-76 text-left font-semibold text-sm bg-white shadow-dialog rounded-xl mt-2"
+                >
                     <form action="#" class="space-y-4 px-4 py-6">
                         <div class="space-y-2">
                             <div>
