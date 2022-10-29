@@ -71,4 +71,13 @@ class Idea extends Model
 
         return $allStatuses[$this->status->name];
     }
+
+    /**
+     *
+     * Return collection of users that has voted the idea
+     */
+    public function votes()
+    {
+        return $this->belongsToMany(User::class, 'votes');
+    }
 }

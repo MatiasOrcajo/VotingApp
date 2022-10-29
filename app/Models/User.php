@@ -79,7 +79,14 @@ class User extends Authenticatable
     }
 
 
-
+    /**
+     *
+     * Return collection of ideas that the user voted for
+     */
+    public function votes()
+    {
+        return $this->belongsToMany(Idea::class, 'votes');
+    }
 
 
 
